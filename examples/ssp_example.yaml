@@ -1,0 +1,19 @@
+module: Structural Separation Lab
+Dg: 1000
+weights:
+  time: 1.0
+  energy: 0.25
+  risk: 50.0
+routes:
+  - name: Exterior route
+    time: 1000
+    energy: 100
+    risk: 0.05
+    robustness: 0.98
+    admissible: true
+  - name: Trans-throat candidate
+    time: 45
+    energy: 25
+    risk: 0.20
+    robustness: 0.70
+    admissible: true

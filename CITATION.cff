@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use WormholeLab, please cite this software."
+title: "WormholeLab: A Falsifiable Wormhole Inference Simulator"
+type: software
+authors:
+  - family-names: "Akhtar"
+    given-names: "Mohammad Amir Khusru"
+year: 2026
+version: "1.0.0"
+license: Apache-2.0
+abstract: >-
+  Browser-based computational companion for testing wormhole geometry, structural
+  separation, model comparison, other-side causal hypotheses, residual structure,
+  multi-messenger consistency, falsification, and reproducibility.
+keywords:
+  - wormholes
+  - general relativity
+  - scientific inference
+  - Bayesian model comparison
+  - reproducibility
+  - Streamlit
