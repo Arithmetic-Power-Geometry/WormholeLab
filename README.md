@@ -64,49 +64,45 @@ That distinction governs everything that follows.
 
 ## 2. Structural Separation Lab
 
-Ordinary distance tells us how far apart two locations are according to a chosen geometry. But a connection can also depend on which routes are admissible, how costly they are, how long they take, and whether they survive perturbation.
+Distance is not always the whole story.
 
-The proposed **Structural Separation Principle (SSP)** makes that distinction explicit.
+Two locations may be far apart geometrically, yet the ways of travelling between them may differ dramatically in time, cost, accessibility, or reliability. The proposed **Structural Separation Principle (SSP)** describes this broader structure of connection.
 
-Let \(A\) and \(B\) be two endpoints, \(\Gamma(A,B)\) the declared set of admissible paths between them, and \(C[\gamma]\) a declared cost assigned to path \(\gamma\).
+Let $A$ and $B$ be two endpoints. Let $\Gamma(A,B)$ be the set of admissible paths connecting them, and let $C(\gamma)$ be the cost assigned to a path $\gamma$.
 
-The operational separation is
-
-$$
-D_{\mathrm{op}}(A,B)
-=
-\inf_{\gamma \in \Gamma(A,B)} C[\gamma].
-$$
-
-A broader structural description can be written as
+The minimum operational cost of connecting $A$ and $B$ is
 
 $$
-S(A,B)
-=
-\left(
-D_g,\,
-T_{\min},\,
-E_{\min},\,
-C_{\min},\,
-N_{\Gamma},\,
-R_{\Gamma}
-\right).
+D_{op}(A,B) = \min_{\gamma \in \Gamma(A,B)} C(\gamma)
 $$
 
-Here:
+when a minimum exists. More generally, the definition can use the infimum:
 
-- \(D_g\) represents geometric separation;
-- \(T_{\min}\) represents minimum travel time;
-- \(E_{\min}\) represents minimum energy or declared resource requirement;
-- \(C_{\min}\) represents minimum declared path cost;
-- \(N_{\Gamma}\) represents the number of admissible routes;
-- \(R_{\Gamma}\) represents route robustness.
+$$
+D_{op}(A,B) = \inf_{\gamma \in \Gamma(A,B)} C(\gamma)
+$$
 
-**The question:**  
-*Can two places remain geometrically distant while the structure of their possible connection changes?*
+SSP can then describe separation through several measurable components:
 
-SSP is a proposed operational construct. It does **not** replace the relativistic spacetime interval.
+$$
+S(A,B) =
+(D_g,\ T_{min},\ E_{min},\ C_{min},\ N_{\Gamma},\ R_{\Gamma})
+$$
 
+where:
+
+- $D_g$ = geometric separation;
+- $T_{min}$ = minimum travel time;
+- $E_{min}$ = minimum energy or required resource;
+- $C_{min}$ = minimum declared path cost;
+- $N_{\Gamma}$ = number of admissible paths;
+- $R_{\Gamma}$ = robustness of those paths.
+
+The central question is:
+
+> **Can two places remain geometrically distant while becoming operationally closer because the structure of connection between them has changed?**
+
+SSP does not replace geometric distance or the relativistic spacetime interval. It adds a different question: **given the allowed paths and a declared cost, how difficult is it to connect the two endpoints?**
 ---
 
 # II. OBSERVE — What would the geometry do?
