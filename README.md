@@ -64,23 +64,25 @@ That distinction governs everything that follows.
 
 ## 2. Structural Separation Lab
 
-Ordinary distance tells us how far apart two locations are according to a chosen geometry. But a connection can also depend on which routes are admissible, how costly they are, how long they take, and whether they survive perturbation.
+Ordinary geometric distance tells us how far apart two locations are within a chosen geometry. But separation can involve more than distance alone. It can also depend on which paths are admissible, how long they take, what resources they require, and how robust those connections are.
 
-The proposed **Structural Separation Principle (SSP)** makes that distinction explicit.
+The proposed **Structural Separation Principle (SSP)** makes this distinction explicit.
 
-Let \(A\) and \(B\) be two endpoints, \(\Gamma(A,B)\) the declared set of admissible paths between them, and \(C[\gamma]\) a declared cost assigned to path \(\gamma\).
+Let \(A\) and \(B\) be two endpoints, let \(\Gamma(A,B)\) denote the declared set of admissible paths connecting them, and let \(C[\gamma]\) be a declared cost functional for an admissible path \(\gamma\).
 
-The operational separation is
+The operational separation is defined as
 
-$$
+```math
 D_{\mathrm{op}}(A,B)
 =
 \inf_{\gamma \in \Gamma(A,B)} C[\gamma].
-$$
+```
 
-A broader structural description can be written as
+The infimum is used because a lowest limiting cost may exist even when no admissible path actually attains it. If the optimum is attained, the infimum is a minimum.
 
-$$
+A broader description of structural separation can be represented by
+
+```math
 S(A,B)
 =
 \left(
@@ -91,21 +93,25 @@ C_{\min},\,
 N_{\Gamma},\,
 R_{\Gamma}
 \right).
-$$
+```
 
 Here:
 
-- \(D_g\) represents geometric separation;
-- \(T_{\min}\) represents minimum travel time;
-- \(E_{\min}\) represents minimum energy or declared resource requirement;
-- \(C_{\min}\) represents minimum declared path cost;
-- \(N_{\Gamma}\) represents the number of admissible routes;
-- \(R_{\Gamma}\) represents route robustness.
+- \(D_g\) = geometric separation;
+- \(T_{\min}\) = minimum travel time over the admissible paths;
+- \(E_{\min}\) = minimum energy or declared resource requirement;
+- \(C_{\min}\) = minimum declared path cost, when attained;
+- \(N_{\Gamma}\) = number, or another explicitly defined measure, of admissible paths;
+- \(R_{\Gamma}\) = explicitly defined robustness of the admissible connection structure.
 
-**The question:**  
-*Can two places remain geometrically distant while the structure of their possible connection changes?*
+**The central question:**  
+*Can two locations remain geometrically distant while becoming operationally closer because the structure of their possible connection has changed?*
 
-SSP is a proposed operational construct. It does **not** replace the relativistic spacetime interval.
+For example, if a new admissible path greatly reduces travel time or cost, \(D_g\) may remain unchanged while \(D_{\mathrm{op}}\) decreases. The endpoints have not become geometrically closer; **the structure connecting them has changed**.
+
+SSP is a **proposed operational construct**. It does not replace proper distance, geodesic distance, the spacetime interval, or any established quantity in general relativity. It asks a different question:
+
+> **Geometry asks how far apart two endpoints are. SSP asks how difficult they are to connect under declared rules.**
 
 ---
 
