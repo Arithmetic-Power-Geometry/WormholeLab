@@ -6,9 +6,9 @@
 
 > **Build it. Observe it. Challenge it. Try to prove it wrong.**
 
-WormholeLab is an open-source, browser-based research and educational environment for exploring how hypothetical wormhole geometries could be modeled, translated into observable consequences, compared with conventional alternatives, and subjected to explicit falsification tests.
+WormholeLab is an open-source, browser-based research and educational environment for exploring how hypothetical wormhole geometries can be modeled, translated into observable consequences, compared with conventional alternatives, and subjected to explicit falsification tests.
 
-It is the computational companion to *Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime*.
+The software grew from the conceptual questions developed in *Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime* and is accompanied by *WormholeLab: From Wonder to Test: A Story-Driven Companion to Building, Observing, Challenging, and Reproducing Wormhole Inference*.
 
 WormholeLab does **not** claim that an astrophysical wormhole has been detected. Every result is conditional on the selected model, approximations, priors, nuisance assumptions, synthetic or supplied data, and implemented numerical methods.
 
@@ -26,7 +26,7 @@ Instead of treating an unusual image, orbit, signal, echo, or residual as eviden
 
 The user first specifies a geometry. The software then derives or approximates observable consequences, compares them with declared rival models, examines what remains unexplained, asks what prediction would make the proposed explanation fail, and records the experiment so that another user can reproduce it.
 
-The purpose is therefore not to make wormholes easier to believe.
+The purpose is not to make wormholes easier to believe.
 
 The purpose is to make wormhole hypotheses **easier to test**.
 
@@ -34,14 +34,25 @@ The purpose is to make wormhole hypotheses **easier to test**.
 
 ## Project Links
 
+**Live application**
+
+https://wormholelab.streamlit.app/
+
 **Source code**
 
 https://github.com/Arithmetic-Power-Geometry/WormholeLab
 
-**Companion book**
+**Archived software release**
 
-Akhtar, M. A. K. (2026). WormholeLab: From Wonder to Test: A Story-Driven Companion to Building, Observing, Challenging, and Reproducing Wormhole Inference (Version V1). Zenodo. 
-https://doi.org/10.5281/zenodo.21982660
+Akhtar, M. A. K. (2026). *WormholeLab: A Falsifiable Wormhole Inference Simulator* (Version V1) [Computer software]. Zenodo.
+
+https://doi.org/10.5281/zenodo.21989916
+
+**WormholeLab companion book**
+
+Akhtar, M. A. K. (2026). *WormholeLab: From Wonder to Test: A Story-Driven Companion to Building, Observing, Challenging, and Reproducing Wormhole Inference*.
+
+Add the companion-book DOI here after the Zenodo record is published.
 
 ---
 
@@ -49,15 +60,11 @@ https://doi.org/10.5281/zenodo.21982660
 
 ### Browser application
 
-WormholeLab is designed for deployment through Streamlit Community Cloud.
+WormholeLab can be used directly in a web browser:
 
-After the public deployment is active, the live application URL can be placed here:
+https://wormholelab.streamlit.app/
 
-```text
-https://<your-app-name>.streamlit.app
-```
-
-No local Python installation is required to use the deployed browser application.
+No local Python installation is required to use the deployed application.
 
 ### Run locally
 
@@ -177,7 +184,7 @@ The proposed **Other-Side Consistency Test (OSCT)** compares:
 H0 = one-region causal model
 ```
 
-with
+with:
 
 ```text
 H1 = one-region model + a specified second/trans-throat causal channel
@@ -220,8 +227,6 @@ Users predeclare a prediction before revealing or evaluating a withheld result.
 
 The module then compares prediction and result against the declared tolerance and records whether the test passed, failed, or remained inconclusive under the implemented criterion.
 
-The principle is simple:
-
 > **Do not ask only whether a model can fit. Ask how it can fail.**
 
 ---
@@ -260,7 +265,7 @@ They are **not substitutes for full numerical-relativity calculations**.
 
 ### Proposed inference constructs
 
-WormholeLab implements four proposed constructs associated with the companion book:
+WormholeLab implements four proposed constructs associated with the companion research program:
 
 - **SSP — Structural Separation Principle**
 - **WIF — Wormhole Inference Framework**
@@ -279,23 +284,27 @@ For endpoints \(A\) and \(B\), let \(\Gamma(A,B)\) denote a declared family of a
 
 The operational separation is represented schematically by
 
-```text
-Dop(A,B) = inf_{γ ∈ Γ(A,B)} C[γ]
-```
+\[
+D_{\mathrm{op}}(A,B)
+=
+\inf_{\gamma \in \Gamma(A,B)} C[\gamma].
+\]
 
 WormholeLab also represents structural separation through quantities such as
 
-```text
-S(A,B) = (Dg, Tmin, Emin, Cmin, NΓ, RΓ)
-```
+\[
+S(A,B)
+=
+(D_g,T_{\min},E_{\min},C_{\min},N_\Gamma,R_\Gamma).
+\]
 
-where the terms can describe geometric separation, minimum travel time, minimum energy or declared resource requirement, minimum path cost, number of admissible routes, and route robustness under the selected model.
+The terms can describe geometric separation, minimum travel time, minimum energy or declared resource requirement, minimum path cost, number of admissible routes, and route robustness under the selected model.
 
-`Dop` is a **declared operational construct**.
+\(D_{\mathrm{op}}\) is a **declared operational construct**.
 
 It does **not** replace the relativistic spacetime interval or claim that geometric distance is physically incorrect.
 
-The computational question is instead:
+The computational question is:
 
 > **Can two endpoints remain geometrically distant while the structure of admissible connection changes?**
 
@@ -316,8 +325,6 @@ Before escalating an interpretation, the workflow requires the user to declare, 
 7. strong conventional rival;
 8. held-out prediction.
 
-The central principle is:
-
 > **A model fitting an observation is weaker evidence than a model surviving a strong rival and successfully predicting something not used to fit it.**
 
 ---
@@ -330,19 +337,23 @@ Conceptually:
 
 ```text
 H0 = one-region causal explanation
-
 H1 = H0 + specified second/trans-throat channel
 ```
 
-A model-comparison quantity can then be written schematically as
+A model-comparison quantity can be written schematically as
 
-```text
-B_OS = p(D | H1) / p(D | H0)
-```
+\[
+B_{\mathrm{OS}}
+=
+\frac{p(D\mid H_1)}
+     {p(D\mid H_0)},
+\]
+
+where each model evidence is understood under the parameters and priors declared for that hypothesis.
 
 A large value does **not** mean “wormhole detected.”
 
-It means that, under the declared assumptions and priors, the specified `H1` explains the selected data better than the specified `H0`.
+It means that, under the declared assumptions and priors, the specified \(H_1\) explains the selected data better than the specified \(H_0\).
 
 The ordinary model should be strengthened before extraordinary interpretation is escalated.
 
@@ -369,8 +380,6 @@ phi_GW
 ```
 
 The purpose is to prevent an apparently successful exotic interpretation from changing its underlying geometry independently for every dataset.
-
-The central question is:
 
 > **Can one geometry survive them all?**
 
@@ -560,37 +569,53 @@ WormholeLab/
 
 ---
 
-# Companion Book
+# Related Books
 
-WormholeLab is the computational companion to:
+## Conceptual foundation
 
-**Akhtar, M. A. K. (2026).** *Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime* (Version V1). Zenodo.
+Akhtar, M. A. K. (2026). *Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime*. In publication.
 
-**DOI:** https://doi.org/10.5281/zenodo.21982660
+This work develops the conceptual motivation for examining distance, connection, spacetime structure, wormhole observability, rival explanations, and falsifiable inference.
 
-The companion book develops the conceptual motivation for examining wormholes through geometry, observable consequences, rival explanations, falsification, structural separation, and multi-channel inference.
+## WormholeLab companion
+
+Akhtar, M. A. K. (2026). *WormholeLab: From Wonder to Test: A Story-Driven Companion to Building, Observing, Challenging, and Reproducing Wormhole Inference*.
+
+This companion guides readers through all thirteen WormholeLab modules and explains what each module does, why it exists, how its outputs should be interpreted, and how the modules form an end-to-end scientific workflow.
+
+Add the companion-book DOI here after publication.
 
 ---
 
 # Citation
 
-If you use WormholeLab in research, teaching, demonstrations, or derived software, please cite the software using the metadata provided in [`CITATION.cff`](CITATION.cff).
+If WormholeLab is used in research, teaching, demonstrations, or derived software, please cite the archived software release.
 
-### Software
+### WormholeLab software
 
-Akhtar, M. A. K. (2026). *WormholeLab: A Falsifiable Wormhole Inference Simulator* (Version 1.0.0) [Computer software].
+Akhtar, M. A. K. (2026). *WormholeLab: A Falsifiable Wormhole Inference Simulator* (Version V1) [Computer software]. Zenodo.
 
-Repository:
+https://doi.org/10.5281/zenodo.21989916
+
+For exact computational reproduction, also report the Git commit or release used.
+
+### Source code
 
 https://github.com/Arithmetic-Power-Geometry/WormholeLab
 
-### Companion book
+### Live application
 
-Akhtar, M. A. K. (2026). *Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime* (Version V1). Zenodo.
+https://wormholelab.streamlit.app/
 
-https://doi.org/10.5281/zenodo.21982660
+### WormholeLab companion book
 
-If a DOI is minted for a specific WormholeLab release through Zenodo or another archival repository, the software DOI should be added to `CITATION.cff` and used when citing that archived release.
+Akhtar, M. A. K. (2026). *WormholeLab: From Wonder to Test: A Story-Driven Companion to Building, Observing, Challenging, and Reproducing Wormhole Inference*.
+
+Add the companion-book DOI here after publication.
+
+### Conceptual book
+
+Akhtar, M. A. K. (2026). *Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime*. In publication.
 
 ---
 
