@@ -11,6 +11,9 @@ year: 2026
 version: "1.0.0"
 license: Apache-2.0
 
+repository-code: "https://github.com/Arithmetic-Power-Geometry/WormholeLab"
+url: "https://github.com/Arithmetic-Power-Geometry/WormholeLab"
+
 abstract: >-
   Browser-based computational companion for testing wormhole geometry,
   structural separation, model comparison, other-side causal hypotheses,
@@ -22,6 +25,7 @@ keywords:
   - general relativity
   - scientific inference
   - Bayesian model comparison
+  - structural separation
   - reproducibility
   - Streamlit
 
