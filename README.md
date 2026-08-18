@@ -195,7 +195,7 @@ It asks:
 
 ## 7. WIF Model Comparator
 
-The proposed **Wormhole Inference Framework (WIF)** makes the comparison explicit.
+The proposed **Wormhole Inference Framework (WIF)** makes model comparison explicit.
 
 A serious comparison should declare, where relevant:
 
@@ -208,21 +208,31 @@ A serious comparison should declare, where relevant:
 7. a strong rival model; and
 8. a held-out prediction.
 
-For model \(M\), the marginal likelihood or model evidence is
+For a model `M`, the marginal likelihood, also called **model evidence**, is
 
-$$
+```math
 p(D \mid M)
 =
 \int
 p(D \mid \theta,M)\,
 p(\theta \mid M)\,
 d\theta.
-$$
+```
 
-This quantity averages predictive performance over the parameter prior. It is not simply the likelihood at the best-fitting parameter value.
+Here:
+
+- `D` = observed or simulated data;
+- `theta` = parameters of model `M`;
+- `p(D | theta, M)` = likelihood;
+- `p(theta | M)` = parameter prior;
+- `p(D | M)` = marginal likelihood or model evidence.
+
+The evidence averages the likelihood over the declared parameter prior. It is therefore not simply the likelihood evaluated at the best-fitting parameter value.
+
+WIF asks a stricter question than whether a model can fit the available data:
 
 **The question:**  
-*Which declared model is better supported under the declared assumptions?*
+*Which declared model is better supported under the declared assumptions, and does that advantage survive prediction on information not used to fit it?*
 
 > **Fitting what you already saw is weaker than predicting what you deliberately withheld.**
 
@@ -232,50 +242,66 @@ This quantity averages predictive performance over the parameter prior. It is no
 
 Suppose an unexplained feature appears to suggest an additional causal route.
 
-The proposed **Other-Side Consistency Test (OSCT)** asks whether the data actually require that extra structure.
+The proposed **Other-Side Consistency Test (OSCT)** asks whether a model containing that additional channel is better supported than a declared one-region rival.
 
-Let
+Define the competing hypotheses as:
 
-$$
+```math
 H_0
 =
 \text{one-region causal model},
-$$
+```
 
 and
 
-$$
+```math
 H_1
 =
-\text{one-region model plus a specified additional causal/trans-throat channel}.
-$$
+\text{one-region model plus a specified additional causal or trans-throat channel}.
+```
 
-The comparison is expressed through the Bayes factor
+OSCT compares the two hypotheses through the Bayes factor
 
-$$
+```math
 B_{\mathrm{OS}}
 =
 \frac{p(D \mid H_1)}
      {p(D \mid H_0)}.
-$$
+```
 
-For either hypothesis,
+For either hypothesis, the marginal likelihood is
 
-$$
+```math
 p(D \mid H_i)
 =
 \int
 p(D \mid \theta_i,H_i)\,
 p(\theta_i \mid H_i)\,
 d\theta_i.
-$$
+```
 
-Therefore, \(B_{\mathrm{OS}}\) compares **marginal likelihoods**, not maximum likelihoods.
+Here:
+
+- `H0` = declared one-region hypothesis;
+- `H1` = declared hypothesis containing the additional channel;
+- `theta_i` = parameters associated with hypothesis `Hi`;
+- `p(D | Hi)` = marginal likelihood for hypothesis `Hi`;
+- `B_OS` = Bayes factor comparing `H1` with `H0`.
+
+Therefore, `B_OS` compares **marginal likelihoods**, not maximum likelihoods.
+
+Under the declared hypotheses, priors, likelihoods, and data:
+
+- `B_OS > 1` favors `H1` over `H0`;
+- `B_OS = 1` gives equal marginal evidence to the two declared hypotheses;
+- `B_OS < 1` favors `H0` over `H1`.
+
+The magnitude of `B_OS`, not merely whether it lies above or below 1, determines the strength of the relative evidence. Its interpretation also depends on the specified models, priors, likelihoods, and data.
 
 **The question:**  
-*Does the additional channel improve the explanation enough to justify its extra structure?*
+*Does the additional causal channel earn enough evidence to justify the extra structure it introduces?*
 
-If \(B_{\mathrm{OS}}>1\), the selected data favor the declared \(H_1\) over the declared \(H_0\) under the chosen priors and assumptions. That does **not** mean that a wormhole has been detected.
+Even strong evidence for `H1` would establish only that the **declared `H1` outperforms the declared `H0` under the stated analysis**. It would not, by itself, establish that the additional channel is physically real or that an astrophysical wormhole has been detected.
 
 ---
 
