@@ -40,8 +40,7 @@ https://github.com/Arithmetic-Power-Geometry/WormholeLab
 
 **Companion book**
 
-Akhtar, M. A. K. (2026). *Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime* (Version V1). Zenodo.
-
+Akhtar, M. A. K. (2026). WormholeLab: From Wonder to Test: A Story-Driven Companion to Building, Observing, Challenging, and Reproducing Wormhole Inference (Version V1). Zenodo. 
 https://doi.org/10.5281/zenodo.21982660
 
 ---
