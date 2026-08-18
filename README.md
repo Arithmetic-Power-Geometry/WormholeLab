@@ -8,273 +8,477 @@
 
 A wormhole is easy to draw. It is much harder to test.
 
-**WormholeLab** is an open-source, browser-based environment for turning hypothetical wormhole geometries into testable consequences. It moves from spacetime geometry to synthetic observables, from observables to rival-model comparison, and from comparison to falsification and reproducibility.
+**WormholeLab** is an open-source, browser-based research environment for turning hypothetical wormhole geometries into testable consequences. It begins with spacetime, asks what an observer might measure, confronts the result with competing explanations, and ends by asking the most important question:
 
-It does **not** claim that an astrophysical wormhole has been detected. Every result is conditional on the chosen geometry, approximations, priors, nuisance assumptions, data, and numerical implementation.
+> **What observation would make the proposed explanation fail?**
 
-### Use it
-
-- **Live app:** https://wormholelab.streamlit.app/
-- **Source code:** https://github.com/Arithmetic-Power-Geometry/WormholeLab
-- **Archived V1:** https://doi.org/10.5281/zenodo.21989916
+WormholeLab does **not** claim that an astrophysical wormhole has been detected. Its results are conditional on the selected models, approximations, priors, nuisance assumptions, data, and numerical implementation.
 
 ---
 
-# From a Picture to a Test
+## Explore WormholeLab
 
-WormholeLab asks one question throughout:
+**Live application**  
+https://wormholelab.streamlit.app/
 
-> **If an observation looked unusual, what would justify calling a wormhole model more than an interesting explanation?**
+**Source code**  
+https://github.com/Arithmetic-Power-Geometry/WormholeLab
 
-The answer is a five-stage discipline:
+**Archived software release**  
+https://doi.org/10.5281/zenodo.21989916
+
+---
+
+# From Wonder to Test
+
+Imagine that an observation contains something unexpected: an unusual ring, an anomalous orbit, a delayed signal, or a persistent residual.
+
+Calling it “wormhole-like” is easy.
+
+The harder question is whether a wormhole model explains the observation **better than a serious rival**, whether the same geometry survives independent tests, and whether it makes a prediction that could later prove it wrong.
+
+WormholeLab turns that reasoning into a five-stage journey:
 
 **Build → Observe → Compare → Falsify → Reproduce**
 
-You begin with geometry, not a conclusion. You ask what light, matter, or signals would do. You strengthen rival explanations. You state what would make the preferred model fail. Then you preserve the experiment so someone else can repeat it.
-
-Thirteen modules make that sequence executable.
+The thirteen modules follow this order deliberately. They are not thirteen independent demonstrations. Together, they form one inference workflow.
 
 ---
 
-# The 13-Module Journey
+# I. BUILD — What spacetime are you testing?
 
-## I. BUILD — What spacetime are you testing?
+## 1. Spacetime Builder
 
-### 1. Spacetime Builder
-Choose a control or wormhole-type geometry, vary its parameters, and inspect implemented horizon, throat, flare-out, and finite-redshift diagnostics.
+Every investigation begins before the telescope.
 
-**Question:** Is the proposed geometry internally meaningful before we ask what it looks like?
+Choose a control or wormhole-type geometry, vary its parameters, and inspect the implemented geometric diagnostics, including horizon, throat, flare-out, and finite-redshift conditions where applicable.
 
-A mathematically admissible geometry is not evidence that nature realizes it.
+**The question:**  
+*Is the proposed geometry internally meaningful before we ask what it might look like?*
 
-### 2. Structural Separation Lab
-Choose endpoints, admissible routes, and a cost definition. The module operationalizes the proposed **Structural Separation Principle (SSP)**.
+A mathematical geometry can be perfectly valid and still have nothing to do with the real universe.
 
-**Question:** Can two places remain geometrically distant while the structure of connection between them changes?
-
----
-
-## II. OBSERVE — What consequences would the geometry leave?
-
-### 3. Light-Ray Simulator
-Trace reduced-order light paths through the selected model, including exterior and, where implemented, trans-throat route families.
-
-**Question:** What would light do?
-
-### 4. Shadow & Ring Lab
-Generate synthetic ring-like observables under controlled assumptions and compare competing geometries.
-
-**Question:** Could different objects produce deceptively similar images?
-
-A ring is an observable. It is not a topology detector.
-
-### 5. Orbit Lab
-Explore test-particle motion, precession, and trajectory residuals.
-
-**Question:** Would nearby matter move differently?
-
-### 6. Ringdown Lab
-Generate reduced-order damped responses, delayed components, noise, and spectra.
-
-**Question:** If looking is ambiguous, can listening add information?
-
-An echo-like feature is a hypothesis to compare, not a wormhole announcement.
+That distinction governs everything that follows.
 
 ---
 
-## III. COMPARE — Does the exotic explanation actually earn preference?
+## 2. Structural Separation Lab
 
-### 7. WIF Model Comparator
-The proposed **Wormhole Inference Framework (WIF)** forces the comparison to expose its model family, priors, forward model, likelihood, nuisance assumptions, rival model, and held-out prediction.
+Ordinary distance tells us how far apart two locations are according to a chosen geometry. But a connection can also depend on which routes are admissible, how costly they are, how long they take, and whether they survive perturbation.
 
-**Question:** Which declared model predicts the data better under declared assumptions?
+The proposed **Structural Separation Principle (SSP)** makes that distinction explicit.
 
-### 8. Other-Side Consistency Test
-The proposed **Other-Side Consistency Test (OSCT)** compares a one-region model with a specified alternative containing an additional causal or trans-throat channel.
+Let \(A\) and \(B\) be two endpoints, \(\Gamma(A,B)\) the declared set of admissible paths between them, and \(C[\gamma]\) a declared cost assigned to path \(\gamma\).
 
-**Question:** Does the data require the extra channel, or can an ordinary explanation absorb it?
+The operational separation is
 
-### 9. Residual Explorer
-Inspect raw and whitened residuals:
+$$
+D_{\mathrm{op}}(A,B)
+=
+\inf_{\gamma \in \Gamma(A,B)} C[\gamma].
+$$
 
-\[
+A broader structural description can be written as
+
+$$
+S(A,B)
+=
+\left(
+D_g,\,
+T_{\min},\,
+E_{\min},\,
+C_{\min},\,
+N_{\Gamma},\,
+R_{\Gamma}
+\right).
+$$
+
+Here:
+
+- \(D_g\) represents geometric separation;
+- \(T_{\min}\) represents minimum travel time;
+- \(E_{\min}\) represents minimum energy or declared resource requirement;
+- \(C_{\min}\) represents minimum declared path cost;
+- \(N_{\Gamma}\) represents the number of admissible routes;
+- \(R_{\Gamma}\) represents route robustness.
+
+**The question:**  
+*Can two places remain geometrically distant while the structure of their possible connection changes?*
+
+SSP is a proposed operational construct. It does **not** replace the relativistic spacetime interval.
+
+---
+
+# II. OBSERVE — What would the geometry do?
+
+A geometry becomes scientifically interesting only when it produces consequences that could, at least in principle, reach an observer.
+
+Modules 3–6 ask the same question through different channels.
+
+---
+
+## 3. Light-Ray Simulator
+
+Send light into the model.
+
+The Light-Ray Simulator explores reduced-order light trajectories for the selected geometry, including exterior and, where implemented, trans-throat route families.
+
+**The question:**  
+*If the geometry were different, how would the paths available to light change?*
+
+The output is not a photograph of a real wormhole. It is a controlled way to connect an assumed geometry with consequences for light propagation.
+
+---
+
+## 4. Shadow & Ring Lab
+
+Now move from rays to appearance.
+
+The module generates synthetic ring-like observables under controlled assumptions and allows alternative geometries to be compared.
+
+This is where an important trap appears: visually striking structures are not necessarily unique.
+
+A black-hole model, a wormhole-type model, and changes in source or emission assumptions may sometimes produce superficially similar observables.
+
+**The question:**  
+*Could another model make something that looks similar?*
+
+> **A ring is an observable. It is not a topology detector.**
+
+---
+
+## 5. Orbit Lab
+
+Light is only one messenger. Matter can interrogate geometry too.
+
+The Orbit Lab explores test-particle motion, orbital precession, and trajectory residuals under different compact-object models.
+
+**The question:**  
+*Would nearby matter move differently if the underlying geometry were different?*
+
+An interpretation that appears interesting in imaging becomes more demanding when orbital behavior must also remain consistent with it.
+
+---
+
+## 6. Ringdown Lab
+
+Sometimes the object is not only something to look at. It is something to listen to.
+
+The Ringdown Lab generates reduced-order damped responses, optional delayed components, noise, and spectra.
+
+**The question:**  
+*After a disturbance, does the response contain structure that competing models predict differently?*
+
+An echo-like or delayed feature is not automatically evidence for exotic topology. It is a feature whose explanatory value depends on the models competing to explain it.
+
+---
+
+# III. COMPARE — Does the exotic model earn preference?
+
+By this stage, WormholeLab may have produced interesting observables.
+
+That is where scientific caution becomes most important.
+
+An unusual feature does not ask, “Can I be fitted by a wormhole model?”
+
+It asks:
+
+> **Can a wormhole model outperform a strong rival without receiving unfair advantages?**
+
+---
+
+## 7. WIF Model Comparator
+
+The proposed **Wormhole Inference Framework (WIF)** makes the comparison explicit.
+
+A serious comparison should declare, where relevant:
+
+1. the model family;
+2. its parameters;
+3. parameter priors;
+4. the forward model;
+5. the likelihood or comparison rule;
+6. nuisance assumptions;
+7. a strong rival model; and
+8. a held-out prediction.
+
+For model \(M\), the marginal likelihood or model evidence is
+
+$$
+p(D \mid M)
+=
+\int
+p(D \mid \theta,M)\,
+p(\theta \mid M)\,
+d\theta.
+$$
+
+This quantity averages predictive performance over the parameter prior. It is not simply the likelihood at the best-fitting parameter value.
+
+**The question:**  
+*Which declared model is better supported under the declared assumptions?*
+
+> **Fitting what you already saw is weaker than predicting what you deliberately withheld.**
+
+---
+
+## 8. Other-Side Consistency Test
+
+Suppose an unexplained feature appears to suggest an additional causal route.
+
+The proposed **Other-Side Consistency Test (OSCT)** asks whether the data actually require that extra structure.
+
+Let
+
+$$
+H_0
+=
+\text{one-region causal model},
+$$
+
+and
+
+$$
+H_1
+=
+\text{one-region model plus a specified additional causal/trans-throat channel}.
+$$
+
+The comparison is expressed through the Bayes factor
+
+$$
+B_{\mathrm{OS}}
+=
+\frac{p(D \mid H_1)}
+     {p(D \mid H_0)}.
+$$
+
+For either hypothesis,
+
+$$
+p(D \mid H_i)
+=
+\int
+p(D \mid \theta_i,H_i)\,
+p(\theta_i \mid H_i)\,
+d\theta_i.
+$$
+
+Therefore, \(B_{\mathrm{OS}}\) compares **marginal likelihoods**, not maximum likelihoods.
+
+**The question:**  
+*Does the additional channel improve the explanation enough to justify its extra structure?*
+
+If \(B_{\mathrm{OS}}>1\), the selected data favor the declared \(H_1\) over the declared \(H_0\) under the chosen priors and assumptions. That does **not** mean that a wormhole has been detected.
+
+---
+
+## 9. Residual Explorer
+
+A model makes a prediction. Reality—or simulated data—answers back.
+
+For observed data \(D\) and prediction \(\widehat{D}\), the residual is
+
+$$
 r = D-\widehat{D}.
-\]
+$$
 
-**Question:** What, exactly, is the current model failing to explain?
+The Residual Explorer examines raw and whitened residual structure.
+
+**The question:**  
+*What is the current model still failing to explain?*
+
+A residual may indicate model inadequacy, calibration error, noise structure, missing nuisance physics, or a genuinely interesting discrepancy.
+
+It does not identify the cause by itself.
 
 > **A residual is a clue, not a discovery.**
 
 ---
 
-## IV. FALSIFY — What could prove the interpretation wrong?
+# IV. FALSIFY — Can the interpretation survive an attempt to break it?
 
-### 10. Multi-Messenger Wormhole Test
-The proposed **Multi-Messenger Wormhole Test (MMWT)** asks whether one shared geometry remains coherent across several observational channels while each channel retains its own nuisance parameters.
+A model becomes more interesting when it survives tests that were capable of defeating it.
 
-**Question:** Can one geometry survive them all?
-
-### 11. Falsification Dashboard
-Lock a prediction before evaluating the withheld result, then record whether it passes, fails, or remains inconclusive under the declared criterion.
-
-**Question:** What result would make you abandon the claim?
-
-> **A framework that cannot lose cannot provide a strong test.**
+Modules 10 and 11 make that vulnerability explicit.
 
 ---
 
-## V. REPRODUCE — Can someone else reach the same result?
+## 10. Multi-Messenger Wormhole Test
 
-### 12. Reproducibility Export
-Export the experiment configuration, numerical result, software version, random seed, and experiment identifier.
+A flexible model may fit one observation. Another version of the same model may fit another.
 
-**Question:** Can another researcher reconstruct what you actually did?
+That is not yet a shared physical explanation.
 
-### 13. Blind Wormhole Challenge
-Infer a hidden synthetic generating model before the answer is revealed.
+The proposed **Multi-Messenger Wormhole Test (MMWT)** asks whether the same underlying geometry can remain coherent across multiple observational channels.
 
-**Question:** Does the inference still work when you do not know what generated the data?
+Let \(\theta_g\) denote geometry parameters shared across channels and \(\phi_k\) nuisance parameters specific to channel \(k\).
 
----
+A schematic joint posterior is
 
-# Four Proposed Inference Constructs
-
-WormholeLab separates **established physics and controls**, **reduced-order browser models**, and **proposed inference constructs**. SSP, WIF, OSCT, and MMWT belong to the third category; they are testable research constructs, not established laws of general relativity.
-
-## Structural Separation Principle (SSP)
-
-Let \(A\) and \(B\) be endpoints, \(\Gamma(A,B)\) the declared admissible path set, and \(C[\gamma]\) a cost functional. Define
-
-\[
-D_{\mathrm{op}}(A,B)
-=
-\inf_{\gamma\in\Gamma(A,B)} C[\gamma].
-\]
-
-A richer structural descriptor can be written as
-
-\[
-S(A,B)=
-\left(
-D_g,T_{\min},E_{\min},C_{\min},N_\Gamma,R_\Gamma
-\right),
-\]
-
-where the components encode geometric separation, minimum time, minimum energy or resource requirement, minimum declared cost, route count, and route robustness under the chosen model.
-
-\(D_{\mathrm{op}}\) is an **operational construct**. It does not replace the relativistic spacetime interval.
-
-## Wormhole Inference Framework (WIF)
-
-WIF requires the relevant inference ingredients to be declared before interpretation: model family, parameters, priors, forward model, likelihood, nuisance assumptions, strong rival, and held-out prediction.
-
-For model \(M\), the marginal likelihood is
-
-\[
-p(D\mid M)
-=
-\int
-p(D\mid\theta,M)\,
-p(\theta\mid M)\,
-d\theta.
-\]
-
-This is model evidence, not merely the likelihood at the best-fitting parameter value.
-
-> **Fitting what you already saw is weaker than predicting what you deliberately withheld.**
-
-## Other-Side Consistency Test (OSCT)
-
-Let \(H_0\) denote a one-region causal model and \(H_1\) the declared alternative with an additional causal/trans-throat channel. OSCT uses the Bayes factor
-
-\[
-B_{\mathrm{OS}}
-=
-\frac{p(D\mid H_1)}
-     {p(D\mid H_0)},
-\]
-
-with
-
-\[
-p(D\mid H_i)
-=
-\int
-p(D\mid\theta_i,H_i)\,
-p(\theta_i\mid H_i)\,
-d\theta_i.
-\]
-
-Thus \(B_{\mathrm{OS}}\) compares **marginal likelihoods**, not maximum likelihoods. Favoring \(H_1\) means only that the declared \(H_1\) outperforms the declared \(H_0\) under the selected data, priors, and assumptions.
-
-## Multi-Messenger Wormhole Test (MMWT)
-
-Let \(\theta_g\) denote geometry parameters shared across channels and \(\phi_k\) channel-specific nuisance parameters. A schematic joint posterior is
-
-\[
-p\!\left(\theta_g,\{\phi_k\}\mid\{D_k\}\right)
+$$
+p\!\left(
+\theta_g,\{\phi_k\}\mid\{D_k\}
+\right)
 \propto
 p(\theta_g)
 \prod_k
 p(\phi_k)\,
 p(D_k\mid\theta_g,\phi_k).
-\]
+$$
 
-The test is deliberately stricter than fitting every channel separately:
+**The question:**  
+*Do the observations agree on one geometry, or only on different convenient versions of it?*
 
-> **Do the observations agree on one geometry, or only on different convenient versions of it?**
+> **Can one geometry survive them all?**
 
 ---
 
-# Scientific Boundary
+## 11. Falsification Dashboard
 
-WormholeLab is not a full numerical-relativity solver or an astronomical discovery pipeline. Its reduced-order models are designed to expose inference logic transparently.
+This module changes the direction of the investigation.
 
-It does **not** claim that:
+Instead of asking what result supports the model, the user first declares what the model predicts and what outcome would count against it.
 
-- astrophysical or traversable wormholes have been detected;
-- a ring, shadow, echo, residual, or Bayes factor proves topology;
-- a synthetic result establishes new physics;
-- SSP, WIF, OSCT, or MMWT are established physical laws.
+Only then is the withheld result evaluated.
 
-The scientifically defensible form of a WormholeLab result is:
+**The question:**  
+*What observation would make you abandon or revise the interpretation?*
+
+A result may pass, fail, or remain inconclusive under the declared criterion.
+
+Failure is not a software malfunction.
+
+Failure is one of the most informative outputs the software can produce.
+
+> **A framework that cannot lose cannot provide a strong test.**
+
+---
+
+# V. REPRODUCE — Can someone else repeat what happened?
+
+A scientific result should survive more than its original screen.
+
+The final two modules ask whether the entire reasoning chain can be reconstructed and challenged independently.
+
+---
+
+## 12. Reproducibility Export
+
+The Reproducibility Export preserves the core experiment record, including:
+
+- module configuration;
+- numerical results;
+- software version;
+- random seed; and
+- experiment identifier.
+
+For scholarly work, users should also preserve the exact software release or Git commit, dataset version, preprocessing choices, priors, nuisance assumptions, and numerical tolerances.
+
+**The question:**  
+*Could another researcher reconstruct what you actually did?*
+
+> **A result should be reproducible before it is persuasive.**
+
+---
+
+## 13. Blind Wormhole Challenge
+
+The final module removes one of the most dangerous advantages in model interpretation: knowing the answer beforehand.
+
+A hidden synthetic model generates the challenge. The user examines the available evidence, makes an inference, and locks the decision before the generating model is revealed.
+
+**The question:**  
+*Does the reasoning still work when you do not know what produced the data?*
+
+The blind challenge turns the entire WormholeLab workflow back on the user.
+
+---
+
+# What Kind of Software Is This?
+
+WormholeLab deliberately separates three levels.
+
+### Established physics and controls
+
+Standard equations, reference geometries, and conventional comparison models provide physical and methodological controls.
+
+### Reduced-order browser models
+
+Several modules use transparent approximations so that the relationship between assumptions and outputs can be inspected interactively.
+
+These models are educational and inferential tools. They are **not substitutes for full numerical relativity, general-relativistic radiative transfer, or observatory-grade analysis pipelines**.
+
+### Proposed inference constructs
+
+SSP, WIF, OSCT, and MMWT are proposed research constructs implemented so that their assumptions can be examined, tested, modified, and rejected if necessary.
+
+They are **not presented as established laws of general relativity**.
+
+---
+
+# What a WormholeLab Result Means
+
+WormholeLab does not turn an anomaly into a discovery statement.
+
+It does not claim that:
+
+- an astrophysical or traversable wormhole has been detected;
+- a ring or shadow proves topology;
+- an echo or delayed component proves a second region;
+- an unexplained residual proves new physics;
+- a Bayes factor alone proves a wormhole;
+- a successful synthetic experiment demonstrates that nature contains the modeled object.
+
+A scientifically defensible conclusion has a more precise form:
 
 > **Under the declared assumptions, this model performed this way against this rival on this test.**
 
-That sentence is less dramatic than “wormhole detected.” It is also more useful.
+That sentence may sound less dramatic than “wormhole detected.”
+
+It is also much harder to fool.
 
 ---
 
 # Run WormholeLab
 
-## In the browser
+## Browser
+
+Open:
 
 https://wormholelab.streamlit.app/
 
 No local Python installation is required.
 
-## Locally
+## Local installation
+
+Create a virtual environment:
 
 ```bash
 python -m venv .venv
 ```
 
-**Windows**
+On Windows:
 
 ```bash
 .venv\Scripts\activate
 ```
 
-**macOS/Linux**
+On macOS or Linux:
 
 ```bash
 source .venv/bin/activate
 ```
 
-Install and run:
+Install the dependencies:
 
 ```bash
 python -m pip install -r requirements.txt
+```
+
+Start WormholeLab:
+
+```bash
 python -m streamlit run app.py
 ```
 
@@ -288,7 +492,7 @@ pytest -q
 
 # Deploy on Streamlit Community Cloud
 
-1. Select the GitHub repository.
+1. Select the WormholeLab GitHub repository.
 2. Choose the deployment branch, normally `main`.
 3. Set the main file path to `app.py`.
 4. Deploy.
@@ -297,15 +501,7 @@ No application secrets are required for the v1.0 public configuration.
 
 ---
 
-# Reproducibility
-
-The export workflow preserves the core experiment record, including configuration, results, software version, seed, and experiment identifier. For scholarly use, also record the exact Git commit or release, dataset version, preprocessing, priors, nuisance assumptions, and numerical tolerances.
-
-> **A result should be reproducible before it is persuasive.**
-
----
-
-# Repository Layout
+# Repository Structure
 
 ```text
 WormholeLab/
@@ -327,60 +523,33 @@ WormholeLab/
 
 ---
 
-# Publications and Citation
+# Publications and Research Objects
 
-### Conceptual book
+## Conceptual foundation
 
-Akhtar, M. A. K. (2026). *Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime*. In publication.
+**Akhtar, M. A. K. (2026).** *Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime*. In publication.
 
-### WormholeLab companion
+## WormholeLab companion book
 
-Akhtar, M. A. K. (2026). *WormholeLab: From Wonder to Test: A Story-Driven Companion to Building, Observing, Challenging, and Reproducing Wormhole Inference*.  
+**Akhtar, M. A. K. (2026).** *WormholeLab: From Wonder to Test: A Story-Driven Companion to Building, Observing, Challenging, and Reproducing Wormhole Inference*.
+
 https://doi.org/10.5281/zenodo.21982660
 
-### Archived software
+## Archived WormholeLab software
 
-Akhtar, M. A. K. (2026). *WormholeLab: A Falsifiable Wormhole Inference Simulator* (Version V1) [Computer software]. Zenodo.  
+**Akhtar, M. A. K. (2026).** *WormholeLab: A Falsifiable Wormhole Inference Simulator* (Version V1) [Computer software]. Zenodo.
+
 https://doi.org/10.5281/zenodo.21989916
 
-For computational reproduction, report the exact Git commit or release in addition to citing the archived software.
+## Source code
 
-### BibLaTeX / BibTeX
+https://github.com/Arithmetic-Power-Geometry/WormholeLab
 
-```bibtex
-@book{akhtar2026distance,
-    author = {Akhtar, Mohammad Amir Khusru},
-    title  = {Perhaps Distance Was Never the Distance: Wormholes and the Search for Hidden Connections in Spacetime},
-    year   = {2026},
-    note   = {In publication}
-}
+## Live application
 
-@software{wormholelabzenodo,
-    author    = {Akhtar, Mohammad Amir Khusru},
-    title     = {WormholeLab: A Falsifiable Wormhole Inference Simulator},
-    year      = {2026},
-    version   = {V1},
-    publisher = {Zenodo},
-    doi       = {10.5281/zenodo.21989916},
-    url       = {https://doi.org/10.5281/zenodo.21989916}
-}
+https://wormholelab.streamlit.app/
 
-@online{wormholelabgithub,
-    author  = {Akhtar, Mohammad Amir Khusru},
-    title   = {WormholeLab Source Code Repository},
-    year    = {2026},
-    url     = {https://github.com/Arithmetic-Power-Geometry/WormholeLab},
-    urldate = {2026-08-18}
-}
-
-@online{wormholelablive,
-    author  = {Akhtar, Mohammad Amir Khusru},
-    title   = {WormholeLab Live Browser Application},
-    year    = {2026},
-    url     = {https://wormholelab.streamlit.app/},
-    urldate = {2026-08-18}
-}
-```
+For computational reproduction, record the exact software release or Git commit used.
 
 ---
 
@@ -394,11 +563,11 @@ See [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
 
 ---
 
-# Research Philosophy
+# The Principle Behind WormholeLab
 
-A wormhole should not become convincing because it is strange.
+The software does not begin by asking how to prove a wormhole exists.
 
-It should become interesting only after ordinary explanations have been given every reasonable chance to win.
+It begins by asking what a wormhole model would have to survive before we should take that interpretation seriously.
 
 > **Extraordinary geometry should not lower the standard of evidence. It should raise it.**
 
