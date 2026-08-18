@@ -97,12 +97,12 @@ R_{\Gamma}
 
 Here:
 
-- \(D_g\) = geometric separation;
-- \(T_{\min}\) = minimum travel time over the admissible paths;
-- \(E_{\min}\) = minimum energy or declared resource requirement;
-- \(C_{\min}\) = minimum declared path cost, when attained;
-- \(N_{\Gamma}\) = number, or another explicitly defined measure, of admissible paths;
-- \(R_{\Gamma}\) = explicitly defined robustness of the admissible connection structure.
+- `D_g` = geometric separation;
+- `T_min` = minimum travel time over the admissible paths;
+- `E_min` = minimum energy or declared resource requirement;
+- `C_min` = minimum declared path cost, when attained;
+- `N_Gamma` = number, or another explicitly defined measure, of admissible paths;
+- `R_Gamma` = explicitly defined robustness of the admissible connection structure.
 
 **The central question:**  
 *Can two locations remain geometrically distant while becoming operationally closer because the structure of their possible connection has changed?*
